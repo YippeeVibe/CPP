@@ -119,8 +119,8 @@ slots:
 class A
 {
     void (*mpf_fun);//指向一个非类的成员函数
-    void (*A::mpf_fun2)//指向一个类A的成员函数
-    void (*B::mpf_fun3)//指向一个类B的成员函数
+    void (A::*mpf_fun2)//指向一个类A的成员函数
+    void (B::*mpf_fun3)//指向一个类B的成员函数
 
 }
 ```
@@ -128,19 +128,61 @@ class A
 使用这些函数指针时，语法规则较为复杂，可以参考：
 
 ```cpp
+#include <functional>
+#include <iostream>
+
 class A;
-class B;
-A a;
-B b;
-a.mpf_fun();
+class B
+{
+public:
+    void print_B()
+    {
+        std::cout << "B";
+    }
 
-(a.*(a.mpf_fun2))();
-// (a.*a.mpf_fun2)();
-(b.*(a.mpf_fun3))();
-// (b.*a.mpf_fun3)();
-//括号为了显示匹配规则
+};
+class A
+{
+public:
+    B* b;
+    void print_A()
+    {
+        std::cout << "A";
+    }
+	void(*mpf_fun)();//指向一个非类的成员函数
+    void(A::*mpf_fun2)();//指向一个类A的成员函数
+    void(B::*mpf_fun3)();//指向一个类B的成员函数
+
+    void TestPrint()
+    {
+        mpf_fun();
+        (this->*mpf_fun2)();
+        (b->*(this->mpf_fun3))();
+       
+    }
+};
 
 
+int main()
+{
+    A a;
+    B b;
+	(a.*(a.mpf_fun2))();
+	// (a.*a.mpf_fun2)();
+	(b.*(a.mpf_fun3))();
+	// store a free function
+	
+
+
+	
+}
+```
+
+//注意使用std::function
+```cpp
+ Foo f;
+    std::function<void(Foo*)> ff = &Foo::p;
+    f.p();
 ```
 
 ### 3.4 类声明布局和封装关键字

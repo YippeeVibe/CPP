@@ -364,4 +364,4 @@ f(x)=\int_{-\infty}^{\infty}
 \hat f(\xi)\,e^{2 \pi i \pi i \xi x}\,d\xi
 $$
 
-
+编写Qt程序时，使用QString 是最好的选择，如果不使用Qt的库，使用std::string是最好的选择。

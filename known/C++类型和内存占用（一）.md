@@ -54,9 +54,16 @@ char(*a)[3]=&str;//它的类型信息
 
 void* b = &str;//转换成void*
 
-char(*c)[3]=(char(*)[3])(b);
+char(*c)[3]=(char(*)[3])(b);//这是强制转换
 
 std::cout<<*c;//输出 ss
+
+char d [10] = "dddd";
+char c [12];
+memcpy(c,d,10);// 最基本的数组直接指向了内存占用，它属于左值，不能直接赋值,使用内存复制函数memcpy。
+std::cout<<c;//输出 dddd
+
+
 
 
 

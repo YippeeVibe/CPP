@@ -61,6 +61,9 @@ std::cout<<*c;//输出 ss
 char d [10] = "dddd";
 char c [12];
 memcpy(c,d,10);// 最基本的数组直接指向了内存占用，它属于左值，不能直接赋值,使用内存复制函数memcpy。
+std::wstring wstr = "ss";
+wchat_t wCh[20];
+memcpt(wCh,wstr.c_str(),wstr.size()*2);//memcpy的第三个行参，它的基本单位是一个字节，如果使用某个类型的size()，记得应该乘以该类型的基本单位
 std::cout<<c;//输出 dddd
 
 

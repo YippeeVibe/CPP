@@ -127,3 +127,128 @@ C中并没有类的概念，这样做是在没有二义性的原则下保持与C
 #include<functional>
 
 ```
+
+
+
+
+Note: 
+对于非类成员，一个函数指针可以视为一个普通的指针，它可以强制转换。也可以理解，一个函数是一个指针，一切皆是指针。
+```cpp
+void f(int);
+
+void* any_ptr = &f;//取函数f的地址。
+
+void* v = any_ptr;
+
+((void(*)(int))(v))(10);//相当于调用f(10);
+
+// void(*)(int)  一个函数指针，和它的类型。
+//(void(*)(int)) 强制转换
+//((void(*)(int))(v)) 优先运算规则，获得一个函数
+
+```
+
+再看一端代码一个函数的调用,既可以通过函数指针调用，也可以通过函数本身调用
+
+```cpp
+void f(int i) {
+	std::cout << i << std::endl;
+}
+int main()
+{
+	
+	void* tf = &f;
+
+	void* c = tf;
+
+
+	void(*pf)(int) = (void(*)(int))(c);
+
+	std::cout << typeid(f).name() << std::endl;
+
+	std::cout << typeid(&f).name()<<std::endl;
+
+	std::cout << typeid(pf).name()<<std::endl;
+
+	std::cout << typeid(*pf).name() << std::endl;
+
+
+	(*pf)(10);
+	pf(10);
+	f(10);
+	(&f)(10);
+}
+
+输出：
+void __cdecl(int)
+void (__cdecl*)(int)
+void (__cdecl*)(int)
+void __cdecl(int)
+10
+10
+10
+10
+```
+
+
+那么类的成员函数是不是这样呢？
+```cpp
+void f(int i) {
+	std::cout << i << std::endl;
+}
+class A {
+public:
+	void f(int i) {
+		std::cout << i << std::endl;
+	}
+};
+int main()
+{
+	
+	void* tf = &f;
+
+	void* tf1 = f;
+
+	//void* tf2 = A::f;  错误
+
+	//void* tf2 = &A::f; 错误
+
+
+	//void(A:: * tf2)(int) = A::f;//错误
+
+	void(A:: * tf2)(int) = &A::f;
+	A a;
+	std::cout << typeid(tf2).name() << std::endl;
+	//std::cout << typeid(*tf2).name() << std::endl;  错误
+
+	//std::cout << typeid(A::f).name() << std::endl;  错误
+	std::cout << typeid(&A::f).name() << std::endl;
+
+	a.f(10);
+	//a.(&f)(10);//错误
+	//(&(a.f))(10);//错误
+	(a.*tf2)(10);
+	//(a.tf2)(10);//错误
+
+
+}
+
+输出：
+void (__thiscall A::*)(int)
+void (__thiscall A::*)(int)
+10
+10
+```
+C++语法比C语法更加严谨。首先，应该明白的的是，一个非类成员若已经声明、定义，就一定会实例化，而类则是新定义一个类型，它对应与int char 等基本类型。它比基本类型可以有更多的扩展，它的声明和定义，并不意味着实例化。  一个类函数指针，若想被正常使用，必须要有两个信息，一个是该函数，一个是这个函数属于哪一个实例。所以，对于“万能指针void*”,并不能体现，这个类的成员函数属于哪一个实例的类，所以，编译器定制规则，不能赋值。还是叫“无类型指针吧”。  另外，在类中，使用一个成员函数，必须解引用。也就是说，类中函数的调用，只有解引用指针后才是一个完整的具体的函数，否则，只是一个指针，它仅仅表示一段地址和它的类型。如果想要一个具体的功能呢？那么绑定它们一个实例的指针可以轻易做到。
+
+
+需要函数指针，意味着我们需要，运行时确定改变调用方向，这个有别于设定状态值，使用if else 判断。
+
+绑定一个类内函数没有什么实际的意义，增加了复杂性。这种需求可以通过存储一个类的指针,然后再调用它的函数轻松实现。
+
+
+把任意类型的指针转化为void* 必须要从其它地方知道它的信息。这种情况下，常用于系统间进程通信，系统间进程通信，传递一个函数。
+
+typeid 真的是个好东西。。。
+
+注意，打印它们的信息出现了 __thiscall 和__cdecl 这两种前缀，它们应该代表函数的调用方式，记得还有其它的调用方式，它们的区别和其它意义呢？

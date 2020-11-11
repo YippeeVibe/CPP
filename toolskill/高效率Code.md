@@ -53,6 +53,7 @@ win10和Unbantu是主要的工作的操作系统。
 2. 打开左侧活动栏ctrl+shift+L
 3. 侧栏可见性 Ctrl+shift+e
 4. 显示面板（命令行）Ctrl+j
+5. 打开终端 Ctrl+`
 ### visualstudio
 在winodows这是最好的选择。
 1. 通过属性->设置工作目录->可以调整代码的运行目录，当软件需要其它dll库，使用这个可以避免一些与dll库交互的错误。

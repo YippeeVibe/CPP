@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/mnt/e/GitHub/CPP/build",
+  "command": "/usr/bin/c++  -DUNIX -I. -I../  -g   -std=gnu++17 -o CMakeFiles/HelloCpp.dir/Code/main.cpp.o -c /mnt/e/GitHub/CPP/Code/main.cpp",
+  "file": "/mnt/e/GitHub/CPP/Code/main.cpp"
+}
+]

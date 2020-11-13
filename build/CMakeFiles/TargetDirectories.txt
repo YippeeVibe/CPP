@@ -1,0 +1,3 @@
+/mnt/e/GitHub/CPP/build/CMakeFiles/rebuild_cache.dir
+/mnt/e/GitHub/CPP/build/CMakeFiles/edit_cache.dir
+/mnt/e/GitHub/CPP/build/CMakeFiles/HelloCpp.dir

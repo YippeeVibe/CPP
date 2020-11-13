@@ -26,7 +26,7 @@ private:
 
   constexpr explicit z_time_during_constexptr (const long double time_d,int type):m_time_d(time_d),time_type(type){}
 
-  friend constexpr z_time_during_constexptr operator"" h(const long double time_d);
+  friend constexpr z_time_during_constexptr operator"" _h(const long double time_d);
 public:
   constexpr long double getTimeduringInSeconds(){return m_time_d*time_type;}
 
@@ -34,7 +34,7 @@ public:
 
 };
 
-constexpr z_time_during_constexptr operator"" h(const long double time_d)
+constexpr z_time_during_constexptr operator"" _h(const long double time_d)
 {
     return z_time_during_constexptr(time_d,3600);
 }

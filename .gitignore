@@ -1,0 +1,8 @@
+/build
+/.vscode
+/.vs
+/.git
+
+*.user
+*build*/
+

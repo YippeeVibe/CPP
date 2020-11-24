@@ -2,8 +2,11 @@
 # C++风格规范
 [参考Google C++风格规范](https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/contents/)
 
+<<<<<<< HEAD:C++风格规范.md
+=======
 [英文版](https://google.github.io/styleguide/cppguide.html)
 
+>>>>>>> bbaf710fc0ddeb3bab11f45fc7b894e3e2e3ac7a:Note/C++风格规范.md
     代码首先要保证机器能够理解，因此应该熟悉语法规则和机器特性，使代码能够通过编译，且运行符合预期；另一方面，代码也要使人（最重要的是自己）能够轻易的理解。好的代码都是迭代出来的。因此，代码易于人理解能够极大的提高效率，并且让阅读者心情愉悦。
 
     好的风格透露着一致性的美，并且不产生歧义。

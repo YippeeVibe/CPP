@@ -44,8 +44,11 @@ win10和Unbantu是主要的工作的操作系统。
  
 ## 4. IDE和编辑器
 ---
+<<<<<<< HEAD:toolskill/高效率Code.md
+=======
 1. 发现找不到包什么的，确定代码没什么问题的话，肯定是编译器环境配置出了问题，这种情况很好解决，先看看，编译器、包含路径什么的配置正确没有，实在不行，选择重装。这种问题碰见好多次了，应该有经验了。
 2. 默认使用GB 18030编码，既可以英文，又可以中文。中文是为了注释或者输出界面，肯定不可以在代码中写中文。有些隐藏的BUG是由这个产生的。
+>>>>>>> bbaf710fc0ddeb3bab11f45fc7b894e3e2e3ac7a:Note/toolskill/高效率Code.md
 ### vscode
 前途广大的编辑器。
 #### $$快捷键
@@ -53,12 +56,18 @@ win10和Unbantu是主要的工作的操作系统。
 2. 打开左侧活动栏ctrl+shift+L
 3. 侧栏可见性 Ctrl+shift+e
 4. 显示面板（命令行）Ctrl+j
+<<<<<<< HEAD:toolskill/高效率Code.md
+=======
 5. 打开终端 Ctrl+`
+>>>>>>> bbaf710fc0ddeb3bab11f45fc7b894e3e2e3ac7a:Note/toolskill/高效率Code.md
 ### visualstudio
 在winodows这是最好的选择。
 1. 通过属性->设置工作目录->可以调整代码的运行目录，当软件需要其它dll库，使用这个可以避免一些与dll库交互的错误。
 ### QtCreator
 QtCreator使用浅色主题，项目背景色为RGB（202,234,206)
 1. 有时候QtCreator会出现代码写着写着没有智能提示的情况  解决方法，把QtCreator的项目配置文件删掉，使用QtCreator重新加载就可以了。
+<<<<<<< HEAD:toolskill/高效率Code.md
+=======
 2. QtCreator 肯定存在缺陷，但是真的好用啊。
+>>>>>>> bbaf710fc0ddeb3bab11f45fc7b894e3e2e3ac7a:Note/toolskill/高效率Code.md
    

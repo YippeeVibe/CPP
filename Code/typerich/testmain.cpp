@@ -4,7 +4,7 @@
 using namespace std;
 int main()
 {
-    z_time_during_constexptr z12{12.0h};
-    cout<<z12.getTimeduringInSeconds();
+   // z_time_during_constexptr z12{12.0h};
+    //cout<<z12.getTimeduringInSeconds();
     return 0;
 }

@@ -24,7 +24,7 @@ protected:
 		void* o = malloc(size);
 		return o;
 	};
-	void operator delete(void* o) {
+	void operator delete(void* o) { //应该调用析构函数，然后释放内存。
 		free(o);
 
 	};

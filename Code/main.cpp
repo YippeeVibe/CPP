@@ -34,7 +34,7 @@ int main()
             groupNumber[2] = groupNumber.at(2)+1;
             break;
         case 4:
-             groupNumber[3] = groupNumber.at(3)+1;
+            groupNumber[3] = groupNumber.at(3)+1;
             break;
         default:
             break;
